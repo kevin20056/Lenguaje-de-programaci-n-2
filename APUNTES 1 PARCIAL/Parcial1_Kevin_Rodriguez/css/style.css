@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family:
+    Calibri,
+    Segoe UI,
+    Arial,
+    sans-serif;
+  background: #10162f;
+  color: #cadcfc;
+  margin: 0;
+  padding: 36px 24px;
+  line-height: 1.5;
+}
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  font-family: Cambria, Georgia, serif;
+  font-weight: normal;
+  font-size: 32px;
+  margin: 0 0 6px;
+}
+.sub {
+  color: #8f9bbd;
+  margin: 0 0 26px;
+  font-size: 15px;
+}
+
+.fila {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+input {
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #2c3763;
+  width: 240px;
+  border-radius: 6px;
+  background: #060b1c;
+  color: #e6edf3;
+  font-family: Consolas, monospace;
+}
+button {
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background: #f96167;
+  color: #fff;
+}
+button:hover {
+  background: #e04b51;
+}
+
+#salida {
+  background: #060b1c;
+  border-left: 4px solid #3a4055;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+#salida.cargando {
+  border-left-color: #e8b23a;
+}
+#salida.error {
+  border-left-color: #f96167;
+}
+#salida.bien {
+  border-left-color: #00a896;
+}
+
+#galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}
+.tarjeta {
+  background: #060b1c;
+  border: 1px solid #1d2749;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.tarjeta img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+.tarjeta .cuerpo {
+  padding: 10px 12px 12px;
+}
+.tarjeta h3 {
+  margin: 0 0 6px;
+  font-family: Cambria, Georgia, serif;
+  font-weight: normal;
+  font-size: 17px;
+  color: #e6edf3;
+}
+.tarjeta p {
+  margin: 0 0 3px;
+  font-size: 13px;
+  color: #a9b8de;
+}
+.estado {
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #10162f;
+  margin-bottom: 8px;
+}
+.estado.Alive {
+  background: #00a896;
+}
+.estado.Dead {
+  background: #f96167;
+}
+.estado.unknown {
+  background: #b0b7c9;
+}

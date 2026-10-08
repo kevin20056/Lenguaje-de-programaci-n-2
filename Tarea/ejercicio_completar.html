@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+  ══════════════════════════════════════════════════════════════════════════
+  EJERCICIO · POKÉDEX  (para completar)
+  Lenguajes de Programación II · Uniremington 2026-2
+  ══════════════════════════════════════════════════════════════════════════
+
+  LA APP YA ESTÁ CONSTRUIDA. Usted completa la función buscar().
+  Es el mismo formato del examen: interfaz lista, usted escribe la lógica.
+
+  ── QUÉ DEBE HACER buscar() ──────────────────────────────────────────────
+
+    1. Avisar que está cargando, ANTES de pedir nada
+    2. Pedir  https://pokeapi.co/api/v2/pokemon/<nombre>
+    3. Si el servidor responde con error  ->  decirlo CON EL NÚMERO y salir
+    4. Si no hay conexión                 ->  decirlo sin romperse
+    5. Si todo sale bien, mostrar: nombre, altura, peso, tipos e imagen
+
+  ── LA FORMA DE LA RESPUESTA (recortada) ─────────────────────────────────
+
+    {
+      "name": "pikachu",
+      "height": 4,                       <- decímetros: dividir entre 10 para metros
+      "weight": 60,                      <- hectogramos: dividir entre 10 para kg
+      "types": [ { "type": { "name": "electric" } } ],     <- un ARREGLO
+      "sprites": { "front_default": "https://.../25.png" } <- objeto dentro de objeto
+    }
+
+  ── AYUDANTES YA ESCRITOS ────────────────────────────────────────────────
+
+    mostrar(html)     pinta contenido en la caja
+    error(texto)      pinta un mensaje de error, en rojo
+    cargando()        pinta «Cargando…», en amarillo
+    nombre()          devuelve lo que escribió el usuario, en minúsculas
+
+  ── PRUEBE LOS TRES CAMINOS ──────────────────────────────────────────────
+
+    Feliz         pikachu
+    Error 404     escriba un nombre que no exista:  xyz
+    Sin conexión  apague el wifi y busque de nuevo
+
+  ── PARA QUIEN TERMINE ANTES (optimizar) ─────────────────────────────────
+
+    · Poner la primera letra del nombre en mayúscula
+    · Deshabilitar el botón mientras carga
+    · Mostrar la altura en metros con un decimal (1,4 m, no 1.4)
+    · Si el Pokémon tiene dos tipos, mostrarlos separados por coma
+  ══════════════════════════════════════════════════════════════════════════
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/script.js" defer></script>
+</head>
+<body>
+<main>
+
+  <h1>Pokédex</h1>
+  <p class="sub">Ejercicio · complete la función buscar()</p>
+
+  <div class="fila">
+    <input id="nombre" type="text" value="pikachu" placeholder="Nombre del Pokémon">
+    <button onclick="buscar()">Buscar</button>
+  </div>
+
+  <div id="salida">Escriba el nombre de un Pokémon y pulse Buscar.</div>
+
+</main>
+</body>
+</html>

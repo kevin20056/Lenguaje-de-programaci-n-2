@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+  ══════════════════════════════════════════════════════════════════════════
+  PRIMER PARCIAL · PARTE PRÁCTICA · VERSIÓN A · GALERÍA DE PERSONAJES
+  Lenguajes de Programación II · Uniremington 2026-2
+  ══════════════════════════════════════════════════════════════════════════
+
+  LA INTERFAZ Y LOS ESTILOS YA ESTÁN. Usted solo escribe la función buscar().
+  Es el mismo formato de la Pokédex, pero ahora con VARIOS personajes.
+
+  ── LO QUE TIENE QUE HACER LA FUNCIÓN ────────────────────────────────────
+
+    1. Avisar que está cargando  ANTES de pedir nada
+    2. Pedir  https://rickandmortyapi.com/api/character/?name=<texto>
+    3. Si el servidor responde con error  ->  decirlo CON EL NÚMERO y salir
+    4. Si no hay conexión                 ->  decirlo sin romperse
+    5. Si todo sale bien:
+         · con mostrar(...)  escribir cuántos personajes se encontraron
+         · con tarjetas(...) pintar UNA TARJETA por cada personaje, con:
+             la imagen, el nombre, el estado y la especie,
+             el origen y en cuántos episodios aparece
+
+  ── LA FORMA DE LA RESPUESTA (recortada) ─────────────────────────────────
+
+    {
+      "info": { "count": 107, "pages": 6 },
+      "results": [                                          <- un ARREGLO
+        {
+          "name": "Rick Sanchez",
+          "status": "Alive",                                <- Alive, Dead o unknown
+          "species": "Human",
+          "origin": { "name": "Earth (C-137)" },            <- objeto dentro de objeto
+          "image": "https://.../1.jpeg",
+          "episode": [ "https://.../1", "https://.../2" ]   <- otro ARREGLO
+        },
+        ...
+      ]
+    }
+
+  ── COMO ARMAR LAS TARJETAS ──────────────────────────────────────────────
+
+    results es un arreglo de personajes:
+      .map(p => `...`)  convierte cada personaje en el HTML de su tarjeta
+      .join('')         une todas las tarjetas en un solo texto
+
+    Cada tarjeta tiene esta estructura (los estilos ya existen):
+
+      <div class="tarjeta">
+        <img src="..." alt="...">
+        <div class="cuerpo">
+          <h3>Nombre</h3>
+          <span class="estado Alive">Alive · Human</span>      <- la clase es el estado
+          <p>Origen: ...</p>
+          <p>51 episodios</p>
+        </div>
+      </div>
+
+  ── AYUDANTES YA ESCRITOS ────────────────────────────────────────────────
+
+    mostrar(texto)     escribe el mensaje en la barra de arriba, en verde
+    tarjetas(html)     pinta las tarjetas en la galería
+    error(texto)       pinta un mensaje de error, en rojo
+    cargando()         pinta «Cargando…», en amarillo
+    textoBuscado()     devuelve lo que escribió el usuario
+
+  ── PRUEBE LOS TRES CAMINOS ANTES DE ENTREGAR ────────────────────────────
+
+    Feliz         busque  rick
+    Error 404     busque  xyz  (no existe ningún personaje así)
+    Sin conexión  apague el wifi y busque de nuevo
+  ══════════════════════════════════════════════════════════════════════════
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de personajes</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js" defer></script>
+</head>
+<body>
+<main>
+
+  <h1>Galería de personajes</h1>
+  <p class="sub">Primer Parcial · Parte práctica · Versión A</p>
+
+  <div class="fila">
+    <input id="texto" type="text" value="rick" placeholder="Nombre del personaje">
+    <button onclick="buscar()">Buscar</button>
+  </div>
+
+  <div id="salida">Escriba un nombre y pulse Buscar.</div>
+  <div id="galeria"></div>
+
+</main>
+</body>
+</html>
